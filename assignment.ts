@@ -9,14 +9,17 @@
       }
 
 
+
       function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[] {
         return items.filter(item => item.rating >= 4);
       }
 
 
+
       function concatenateArrays<T>(...arrays: T[][]): T[] {
         return ([] as T[]).concat(...arrays);
       }
+
 
 
       class Vehicle {
@@ -93,6 +96,7 @@
 
 
 
+
       enum Day {
         Monday,
         Tuesday,
@@ -109,22 +113,17 @@
         } else if (day === Day.Saturday || day === Day.Sunday) {
           return "Weekend";
         } else {
-          // This case should ideally not be reached with a proper Day enum
           return "Unknown";
         }
       }
       
       console.log(getDayType(Day.Monday));
-      // Output: "Weekday"
       console.log(getDayType(Day.Friday));
-      // Output: "Weekday"
       console.log(getDayType(Day.Saturday));
-      // Output: "Weekend"
       console.log(getDayType(Day.Sunday));
-      // Output: "Weekend"
 
 
-      
+
 
       async function squareAsync(n: number): Promise<number> {
         if (n < 0) {
@@ -138,18 +137,6 @@
         });
       }
       
-      // Example usage:
-      squareAsync(4)
-        .then((result) => console.log(result))
-        .catch((error) => console.error(error)); // Output after 1s: 16
       
-      squareAsync(-3)
-        .catch((error) => console.error(error)); // Output: Error: Negative number not allowed
-      
-      squareAsync(5)
-        .then(result => {
-          console.log("Result of squareAsync(5):", result);
-        });
-
     
 }
