@@ -57,29 +57,99 @@
       }
 
 
+
+      interface Product {
+        name: string;
+        price: number;
+      }
       
+      function getMostExpensiveProduct(products: Product[]): Product | null {
+        if (products.length === 0) {
+          return null;
+        }
       
+        let mostExpensive: Product = products[0];
+        for (let i = 1; i < products.length; i++) {
+          if (products[i].price > mostExpensive.price) {
+            mostExpensive = products[i];
+          }
+        }
+        return mostExpensive;
+      }
+      
+      const products = [
+        { name: "Pen", price: 10 },
+        { name: "Notebook", price: 25 },
+        { name: "Bag", price: 50 }
+      ];
+      
+      const mostExpensive = getMostExpensiveProduct(products);
+      console.log(mostExpensive);
+    
+      
+      const emptyProducts: Product[] = [];
+      const mostExpensiveEmpty = getMostExpensiveProduct(emptyProducts);
+      console.log(mostExpensiveEmpty);
+
+
+
+      enum Day {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+      }
+      
+      function getDayType(day: Day): string {
+        if (day >= Day.Monday && day <= Day.Friday) {
+          return "Weekday";
+        } else if (day === Day.Saturday || day === Day.Sunday) {
+          return "Weekend";
+        } else {
+          // This case should ideally not be reached with a proper Day enum
+          return "Unknown";
+        }
+      }
+      
+      console.log(getDayType(Day.Monday));
+      // Output: "Weekday"
+      console.log(getDayType(Day.Friday));
+      // Output: "Weekday"
+      console.log(getDayType(Day.Saturday));
+      // Output: "Weekend"
+      console.log(getDayType(Day.Sunday));
+      // Output: "Weekend"
+
+
       
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      async function squareAsync(n: number): Promise<number> {
+        if (n < 0) {
+          return Promise.reject(new Error("Negative number not allowed"));
+        }
+      
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(n * n);
+          }, 1000);
+        });
+      }
+      
+      // Example usage:
+      squareAsync(4)
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error)); // Output after 1s: 16
+      
+      squareAsync(-3)
+        .catch((error) => console.error(error)); // Output: Error: Negative number not allowed
+      
+      squareAsync(5)
+        .then(result => {
+          console.log("Result of squareAsync(5):", result);
+        });
 
     
 }
